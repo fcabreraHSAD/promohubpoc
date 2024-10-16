@@ -72,9 +72,9 @@ def main():
             display_end_date = st.date_input("Display End Date*", value=datetime.now())
         col7, col8 = st.columns(2)
         with col7:
-            description = st.text_area("Description", value="", help="Enter a brief overview of what the promotion entails")
+            title = st.text_input("Title*", value="", max_chars=60, help="Enter the title of the promotion (Maximum 60 characters)")
         with col8:
-            title = st.text_input("Title*", value="", help="Enter the title of the promotion")
+            description = st.text_area("Description", value="", max_chars=100, help="Enter the description of any free gift offered in the promotion (Maximum 100 characters). Example: Free tote bag with 100.00 USD purchase.")")
         body_copy = st.text_area("Body Copy*", value="", help="Enter detailed text for the promotion", key='body_copy')
         col9, col10 = st.columns(2)
         with col9:
