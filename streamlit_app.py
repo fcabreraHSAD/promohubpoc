@@ -5,7 +5,16 @@ from datetime import datetime
 # Promotion Management Hub Streamlit App
 def main():
     st.set_page_config(page_title="Promotion Management Hub", layout="wide")
-    st.image('https://via.placeholder.com/150', use_column_width=False, caption='Company Logo')
+    st.markdown("""
+        <div style='text-align: center;'>
+            <img src='https://media.us.lg.com/m/4f3e261da34f4910/original/lg_logo.svg' width='150'>
+        </div>
+        """, unsafe_allow_html=True)
+    st.markdown("""
+        <div style='text-align: center;'>
+            <img src='https://drive.google.com/uc?export=view&id=147CmaCAFLYlfgRsGYP0XN4qm2NXOD0Kp' width='150'>
+        </div>
+        """, unsafe_allow_html=True)
     st.title("Promotion Management Hub")
     st.write("By MarTech Solutions")
     
@@ -62,14 +71,14 @@ def main():
             coupon_code = st.text_input("Coupon Code (if applicable)", value="")
         col3, col4 = st.columns(2)
         with col3:
-            start_date = st.date_input("Start Date*", value=datetime.now(), format="%m/%d/%Y")
+            start_date = st.date_input("Start Date*", value=datetime.now())
         with col4:
-            end_date = st.date_input("End Date*", value=datetime.now(), format="%m/%d/%Y")
+            end_date = st.date_input("End Date*", value=datetime.now())
         col5, col6 = st.columns(2)
         with col5:
-            display_start_date = st.date_input("Display Start Date*", value=datetime.now(), format="%m/%d/%Y")
+            display_start_date = st.date_input("Display Start Date*", value=datetime.now())
         with col6:
-            display_end_date = st.date_input("Display End Date*", value=datetime.now(), format="%m/%d/%Y")
+            display_end_date = st.date_input("Display End Date*", value=datetime.now())
         col7, col8 = st.columns(2)
         with col7:
             title = st.text_input("Title*", value="", max_chars=60, help="Enter the title of the promotion (Maximum 60 characters)")
@@ -98,7 +107,7 @@ def main():
             "Email Marketing", "Social Media Platforms", "SMS/Text Message", "Affiliate Partners", "Display",
             "Onsite via CMS", "Onsite via Personalization / AB Testing Tool", "PLA", "SEM"
         ])
-        extended_end_date = st.date_input("Extended End Date (if applicable)", value=None, format="%m/%d/%Y")
+        extended_end_date = st.date_input("Extended End Date (if applicable)", value=None)
         
         # Form submission button
         submitted = st.form_submit_button("Submit Promotion")
