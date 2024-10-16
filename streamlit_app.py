@@ -8,57 +8,39 @@ def main():
     st.title("Promotion Management Hub")
     st.write("By MarTech Solutions")
     
-    # Add support for custom dark and light mode themes
+    # Apply theme colors as specified by user
     st.markdown(
         """
         <style>
-            @media (prefers-color-scheme: dark) {
-                .stTextInput > div > input, .stTextArea > div > textarea {
-                    background-color: #1e1e1e;
-                    color: #f0f0f0;
-                    border-radius: 5px;
-                    border: 1px solid #444;
-                    padding: 8px;
-                }
-                .stForm > div {
-                    background-color: #2a2a2a;
-                    padding: 20px;
-                    border-radius: 10px;
-                }
-                .stButton > button {
-                    background-color: #007acc;
-                    color: #ffffff;
-                    border: none;
-                    padding: 10px 20px;
-                    border-radius: 5px;
-                    font-weight: bold;
-                }
-                .stButton > button:hover {
-                    background-color: #005f99;
-                }
+            .stTextInput > div > input, .stTextArea > div > textarea {
+                background-color: #f0ece4;
+                color: #152542;
+                border-radius: 5px;
+                border: 1px solid #a3afc4;
+                padding: 8px;
             }
-            @media (prefers-color-scheme: light) {
-                .stTextInput > div > input, .stTextArea > div > textarea {
-                    border-radius: 5px;
-                    border: 1px solid #a3afc4;
-                    padding: 8px;
-                }
-                .stForm > div {
-                    background-color: #f0ece4;
-                    padding: 20px;
-                    border-radius: 10px;
-                }
-                .stButton > button {
-                    background-color: #ea1917;
-                    color: #ffffff;
-                    border: none;
-                    padding: 10px 20px;
-                    border-radius: 5px;
-                    font-weight: bold;
-                }
-                .stButton > button:hover {
-                    background-color: #a60032;
-                }
+            .stForm > div {
+                background-color: #fcfdfe;
+                padding: 20px;
+                border-radius: 10px;
+            }
+            .stButton > button {
+                background-color: #ea1917;
+                color: #ffffff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-weight: bold;
+            }
+            .stButton > button:hover {
+                background-color: #a60032;
+            }
+            .stSelectbox > div > select, .stMultiselect > div > div > select {
+                background-color: #e2e7f0;
+                color: #3e547c;
+                border-radius: 5px;
+                border: 1px solid #a3afc4;
+                padding: 8px;
             }
         </style>
         """,
@@ -68,7 +50,10 @@ def main():
     # Form to collect promotion data
     with st.form("promotion_form"):
         st.header("Enter Promotion Details")
-        promotion_id = st.text_input("Promotion ID (Primary Key)*", value="", help="Enter a unique identifier for the promotion")
+        import random
+
+        # Generate system-generated Promotion ID with prefix 'PMH'
+        promotion_id = f"PMH{random.randint(1000, 9999)}"
         promo_name = st.text_input("Promo Name*", value="", help="Enter the name of the promotion")
         coupon_code = st.text_input("Coupon Code (if applicable)", value="")
         start_date = st.date_input("Start Date*", value=datetime.now())
@@ -104,7 +89,7 @@ def main():
         
         # Ensure all required fields are filled out before submission
         if submitted:
-            if not (promotion_id and promo_name and start_date and end_date and display_start_date and display_end_date and title and body_copy and assets and terms_conditions and target_audience and store_name and promotion_type):
+            if not (promo_name and start_date and end_date and display_start_date and display_end_date and title and body_copy and assets and terms_conditions and target_audience and store_name and promotion_type):
                 st.error("Please fill out all required fields before submitting the form.")
             else:
                 # Prepare the data for webhook submission
