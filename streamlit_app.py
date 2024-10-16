@@ -74,7 +74,7 @@ def main():
         with col7:
             title = st.text_input("Title*", value="", max_chars=60, help="Enter the title of the promotion (Maximum 60 characters)")
         with col8:
-            description = st.text_area("Description", value="", max_chars=100, help="Enter the description of any free gift offered in the promotion (Maximum 100 characters). Example: Free tote bag with 100.00 USD purchase.")")
+            description = st.text_area("Description", value="", max_chars=100, help="Enter the description of any free gift offered in the promotion (Maximum 100 characters). Example: Free tote bag with 100.00 USD purchase.")
         body_copy = st.text_area("Body Copy*", value="", help="Enter detailed text for the promotion", key='body_copy')
         col9, col10 = st.columns(2)
         with col9:
