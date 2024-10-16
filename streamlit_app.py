@@ -89,7 +89,26 @@ def main():
         
         # Ensure all required fields are filled out before submission
         if submitted:
-            if not (promo_name and start_date and end_date and display_start_date and display_end_date and title and body_copy and assets and terms_conditions and target_audience and store_name and promotion_type):
+            missing_fields = []
+            if extended_end_date and extended_end_date < end_date:
+                st.error("Extended End Date cannot be earlier than End Date.")
+                missing_fields.append('Extended End Date (if applicable)')
+            if not promo_name: missing_fields.append('Promo Name*')
+            if not start_date: missing_fields.append('Start Date*')
+            if not end_date: missing_fields.append('End Date*')
+            if not display_start_date: missing_fields.append('Display Start Date*')
+            if not display_end_date: missing_fields.append('Display End Date*')
+            if not title: missing_fields.append('Title*')
+            if not body_copy: missing_fields.append('Body Copy*')
+            if not assets: missing_fields.append('Assets*')
+            if not terms_conditions: missing_fields.append('Terms & Conditions*')
+            if not target_audience: missing_fields.append('Target Audience*')
+            if not store_name: missing_fields.append('Store Name*')
+            if not promotion_type: missing_fields.append('Promotion Type*')
+            if missing_fields:
+                for field in missing_fields:
+                    st.warning(f"Please fill out the field: {field}")
+                st.error("Please fill out all required fields before submitting the form.")
                 st.error("Please fill out all required fields before submitting the form.")
             else:
                 # Prepare the data for webhook submission
