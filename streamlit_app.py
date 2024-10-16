@@ -5,6 +5,7 @@ from datetime import datetime
 # Promotion Management Hub Streamlit App
 def main():
     st.set_page_config(page_title="Promotion Management Hub", layout="wide")
+    st.image('https://via.placeholder.com/150', use_column_width=False, caption='Company Logo')
     st.title("Promotion Management Hub")
     st.write("By MarTech Solutions")
     
@@ -48,25 +49,40 @@ def main():
     )
     
     # Form to collect promotion data
-    with st.form("promotion_form"):
+    with st.form("promotion_form", clear_on_submit=True):
         st.header("Enter Promotion Details")
         import random
 
         # Generate system-generated Promotion ID with prefix 'PMH'
         promotion_id = f"PMH{random.randint(1000, 9999)}"
-        promo_name = st.text_input("Promo Name*", value="", help="Enter the name of the promotion")
-        coupon_code = st.text_input("Coupon Code (if applicable)", value="")
-        start_date = st.date_input("Start Date*", value=datetime.now())
-        end_date = st.date_input("End Date*", value=datetime.now())
-        display_start_date = st.date_input("Display Start Date*", value=datetime.now())
-        display_end_date = st.date_input("Display End Date*", value=datetime.now())
-        description = st.text_area("Description", value="", help="Enter a brief overview of what the promotion entails")
-        title = st.text_input("Title*", value="", help="Enter the title of the promotion")
-        body_copy = st.text_area("Body Copy*", value="", help="Enter detailed text for the promotion")
-        cta = st.text_input("CTA (Call to Action)", value="", help="Button label for the promotion")
-        link = st.text_input("Link (URL)*", value="", help="URL or hyperlink associated with the CTA") if cta else ""
-        assets = st.text_input("Assets*", value="", help="Links to promotional assets like images or videos")
-        terms_conditions = st.text_input("Terms & Conditions*", value="")
+        col1, col2 = st.columns(2)
+        with col1:
+            promo_name = st.text_input("Promo Name*", value="", help="Enter the name of the promotion")
+        with col2:
+            coupon_code = st.text_input("Coupon Code (if applicable)", value="")
+        col3, col4 = st.columns(2)
+        with col3:
+            start_date = st.date_input("Start Date*", value=datetime.now())
+        with col4:
+            end_date = st.date_input("End Date*", value=datetime.now())
+        col5, col6 = st.columns(2)
+        with col5:
+            display_start_date = st.date_input("Display Start Date*", value=datetime.now())
+        with col6:
+            display_end_date = st.date_input("Display End Date*", value=datetime.now())
+        col7, col8 = st.columns(2)
+        with col7:
+            description = st.text_area("Description", value="", help="Enter a brief overview of what the promotion entails")
+        with col8:
+            title = st.text_input("Title*", value="", help="Enter the title of the promotion")
+        body_copy = st.text_area("Body Copy*", value="", help="Enter detailed text for the promotion", key='body_copy')
+        col9, col10 = st.columns(2)
+        with col9:
+            cta = st.text_input("CTA (Call to Action)", value="", help="Button label for the promotion")
+        with col10:
+            link = st.text_input("Link (URL)*", value="", help="URL or hyperlink associated with the CTA") if cta else ""
+        assets = st.text_input("Assets*", value="", help="Links to promotional assets like images or videos", key='assets')
+        terms_conditions = st.text_input("Terms & Conditions*", value="", key='terms_conditions')
         target_audience = st.multiselect("Target Audience*", ["All Customers", "New Customers", "Returning Customers"], help="Select the target audience for the promotion")
         discount_rate = st.text_input("Discount Rate (if applicable)", value="")
         status = "Upcoming"  # Default status
