@@ -62,14 +62,14 @@ def main():
             coupon_code = st.text_input("Coupon Code (if applicable)", value="")
         col3, col4 = st.columns(2)
         with col3:
-            start_date = st.date_input("Start Date*", value=datetime.now())
+            start_date = st.date_input("Start Date*", value=datetime.now(), format="%m/%d/%Y")
         with col4:
-            end_date = st.date_input("End Date*", value=datetime.now())
+            end_date = st.date_input("End Date*", value=datetime.now(), format="%m/%d/%Y")
         col5, col6 = st.columns(2)
         with col5:
-            display_start_date = st.date_input("Display Start Date*", value=datetime.now())
+            display_start_date = st.date_input("Display Start Date*", value=datetime.now(), format="%m/%d/%Y")
         with col6:
-            display_end_date = st.date_input("Display End Date*", value=datetime.now())
+            display_end_date = st.date_input("Display End Date*", value=datetime.now(), format="%m/%d/%Y")
         col7, col8 = st.columns(2)
         with col7:
             title = st.text_input("Title*", value="", max_chars=60, help="Enter the title of the promotion (Maximum 60 characters)")
@@ -98,7 +98,7 @@ def main():
             "Email Marketing", "Social Media Platforms", "SMS/Text Message", "Affiliate Partners", "Display",
             "Onsite via CMS", "Onsite via Personalization / AB Testing Tool", "PLA", "SEM"
         ])
-        extended_end_date = st.date_input("Extended End Date (if applicable)", value=None)
+        extended_end_date = st.date_input("Extended End Date (if applicable)", value=None, format="%m/%d/%Y")
         
         # Form submission button
         submitted = st.form_submit_button("Submit Promotion")
@@ -132,10 +132,10 @@ def main():
                     "PromotionID": promotion_id,
                     "PromoName": promo_name,
                     "CouponCode": coupon_code,
-                    "StartDate": start_date.strftime("%Y-%m-%d"),
-                    "EndDate": end_date.strftime("%Y-%m-%d"),
-                    "DisplayStartDate": display_start_date.strftime("%Y-%m-%d"),
-                    "DisplayEndDate": display_end_date.strftime("%Y-%m-%d"),
+                    "StartDate": start_date.strftime("%m/%d/%Y"),
+                    "EndDate": end_date.strftime("%m/%d/%Y"),
+                    "DisplayStartDate": display_start_date.strftime("%m/%d/%Y"),
+                    "DisplayEndDate": display_end_date.strftime("%m/%d/%Y"),
                     "Description": description,
                     "Title": title,
                     "BodyCopy": body_copy,
@@ -151,7 +151,7 @@ def main():
                     "PromotionType": promotion_type,
                     "IsFinalized": is_finalized,
                     "ActivationChannel": activation_channel,
-                    "ExtendedEndDate": extended_end_date.strftime("%Y-%m-%d") if extended_end_date else ""
+                    "ExtendedEndDate": extended_end_date.strftime("%m/%d/%Y") if extended_end_date else ""
                 }
                 
                 # Send data to Zapier webhook
