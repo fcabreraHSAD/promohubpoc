@@ -11,9 +11,7 @@ def main():
         </div>
         """, unsafe_allow_html=True)
     st.markdown("""
-        <div style='text-align: center;'>
-            <img src='https://drive.google.com/uc?export=view&id=147CmaCAFLYlfgRsGYP0XN4qm2NXOD0Kp' width='150'>
-        </div>
+        
         """, unsafe_allow_html=True)
     st.title("Promotion Management Hub")
     st.write("By MarTech Solutions")
