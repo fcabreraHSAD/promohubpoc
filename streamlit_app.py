@@ -8,25 +8,25 @@ def main():
     st.title("Promotion Management Hub")
     st.write("By MarTech Solutions")
     
-    # Add support for dark and light mode themes
+    # Add support for custom dark and light mode themes
     st.markdown(
         """
         <style>
             @media (prefers-color-scheme: dark) {
                 .stTextInput > div > input, .stTextArea > div > textarea {
-                    background-color: #333;
-                    color: #f0ece4;
+                    background-color: #1e1e1e;
+                    color: #f0f0f0;
                     border-radius: 5px;
-                    border: 1px solid #a3afc4;
+                    border: 1px solid #444;
                     padding: 8px;
                 }
                 .stForm > div {
-                    background-color: #2c2c2c;
+                    background-color: #2a2a2a;
                     padding: 20px;
                     border-radius: 10px;
                 }
                 .stButton > button {
-                    background-color: #ea1917;
+                    background-color: #007acc;
                     color: #ffffff;
                     border: none;
                     padding: 10px 20px;
@@ -34,7 +34,7 @@ def main():
                     font-weight: bold;
                 }
                 .stButton > button:hover {
-                    background-color: #a60032;
+                    background-color: #005f99;
                 }
             }
             @media (prefers-color-scheme: light) {
