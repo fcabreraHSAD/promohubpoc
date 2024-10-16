@@ -8,35 +8,57 @@ def main():
     st.title("Promotion Management Hub")
     st.write("By MarTech Solutions")
     
-    # Define custom theme colors
+    # Add support for dark and light mode themes
     st.markdown(
         """
         <style>
-            .stTextInput > div > input {
-                border-radius: 5px;
-                border: 1px solid #a3afc4;
-                padding: 8px;
+            @media (prefers-color-scheme: dark) {
+                .stTextInput > div > input, .stTextArea > div > textarea {
+                    background-color: #333;
+                    color: #f0ece4;
+                    border-radius: 5px;
+                    border: 1px solid #a3afc4;
+                    padding: 8px;
+                }
+                .stForm > div {
+                    background-color: #2c2c2c;
+                    padding: 20px;
+                    border-radius: 10px;
+                }
+                .stButton > button {
+                    background-color: #ea1917;
+                    color: #ffffff;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    font-weight: bold;
+                }
+                .stButton > button:hover {
+                    background-color: #a60032;
+                }
             }
-            .stTextArea > div > textarea {
-                border-radius: 5px;
-                border: 1px solid #a3afc4;
-                padding: 8px;
-            }
-            .stForm > div {
-                background-color: #f0ece4;
-                padding: 20px;
-                border-radius: 10px;
-            }
-            .stButton > button {
-                background-color: #ea1917;
-                color: #ffffff;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                font-weight: bold;
-            }
-            .stButton > button:hover {
-                background-color: #a60032;
+            @media (prefers-color-scheme: light) {
+                .stTextInput > div > input, .stTextArea > div > textarea {
+                    border-radius: 5px;
+                    border: 1px solid #a3afc4;
+                    padding: 8px;
+                }
+                .stForm > div {
+                    background-color: #f0ece4;
+                    padding: 20px;
+                    border-radius: 10px;
+                }
+                .stButton > button {
+                    background-color: #ea1917;
+                    color: #ffffff;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    font-weight: bold;
+                }
+                .stButton > button:hover {
+                    background-color: #a60032;
+                }
             }
         </style>
         """,
@@ -64,14 +86,14 @@ def main():
         discount_rate = st.text_input("Discount Rate (if applicable)", value="")
         status = "Upcoming"  # Default status
         store_name = st.multiselect("Store Name*", ["OBS", "EOS", "PM", "ThinQ"], help="Select applicable stores for the promotion")
-        applicable_products = st.text_area("Applicable Products (comma-separated list)", value="", help="Enter a comma-separated list of products applicable to this promotion")
+        applicable_products = st.multiselect("Applicable Products or Categories", ["Fetch product data from the shared Google Sheet"], help="Select applicable products or categories for the promotion")
         promotion_type = st.selectbox("Promotion Type*", [
             "Product package Rebate", "Product package instant discount", "Package with variable discount", "Single product rebate",
             "Single product instant discount", "Product bundle", "Value-add", "Cross-sells", "Upsell", "Add-ons", "Buy one, get one free",
             "Buy more, save more", "Promo code", "Subscriptions", "Store Credit", "Rewards points"
         ])
         is_finalized = st.checkbox("Is Finalized*", value=False, help="Check if the promotion details are finalized")
-        activation_channel = st.selectbox("Activation Channel", [
+        activation_channel = st.multiselect("Activation Channel", [
             "Email Marketing", "Social Media Platforms", "SMS/Text Message", "Affiliate Partners", "Display",
             "Onsite via CMS", "Onsite via Personalization / AB Testing Tool", "PLA", "SEM"
         ])
@@ -80,43 +102,47 @@ def main():
         # Form submission button
         submitted = st.form_submit_button("Submit Promotion")
         
+        # Ensure all required fields are filled out before submission
         if submitted:
-            # Prepare the data for webhook submission
-            promotion_data = {
-                "PromotionID": promotion_id,
-                "PromoName": promo_name,
-                "CouponCode": coupon_code,
-                "StartDate": start_date.strftime("%Y-%m-%d"),
-                "EndDate": end_date.strftime("%Y-%m-%d"),
-                "DisplayStartDate": display_start_date.strftime("%Y-%m-%d"),
-                "DisplayEndDate": display_end_date.strftime("%Y-%m-%d"),
-                "Description": description,
-                "Title": title,
-                "BodyCopy": body_copy,
-                "CTA": cta,
-                "Link": link,
-                "Assets": assets,
-                "TermsConditions": terms_conditions,
-                "TargetAudience": target_audience,
-                "DiscountRate": discount_rate,
-                "Status": status,
-                "StoreName": store_name,
-                "ApplicableProducts": applicable_products,
-                "PromotionType": promotion_type,
-                "IsFinalized": is_finalized,
-                "ActivationChannel": activation_channel,
-                "ExtendedEndDate": extended_end_date.strftime("%Y-%m-%d") if extended_end_date else ""
-            }
-            
-            # Send data to Zapier webhook
-            webhook_url = "https://hooks.zapier.com/hooks/catch/9480052/2197ir5/"
-            response = requests.post(webhook_url, json=promotion_data)
-            
-            # Handle the response
-            if response.status_code == 200:
-                st.success("Promotion details successfully submitted!")
+            if not (promotion_id and promo_name and start_date and end_date and display_start_date and display_end_date and title and body_copy and assets and terms_conditions and target_audience and store_name and promotion_type):
+                st.error("Please fill out all required fields before submitting the form.")
             else:
-                st.error(f"Failed to submit promotion details. Status code: {response.status_code}")
+                # Prepare the data for webhook submission
+                promotion_data = {
+                    "PromotionID": promotion_id,
+                    "PromoName": promo_name,
+                    "CouponCode": coupon_code,
+                    "StartDate": start_date.strftime("%Y-%m-%d"),
+                    "EndDate": end_date.strftime("%Y-%m-%d"),
+                    "DisplayStartDate": display_start_date.strftime("%Y-%m-%d"),
+                    "DisplayEndDate": display_end_date.strftime("%Y-%m-%d"),
+                    "Description": description,
+                    "Title": title,
+                    "BodyCopy": body_copy,
+                    "CTA": cta,
+                    "Link": link,
+                    "Assets": assets,
+                    "TermsConditions": terms_conditions,
+                    "TargetAudience": target_audience,
+                    "DiscountRate": discount_rate,
+                    "Status": status,
+                    "StoreName": store_name,
+                    "ApplicableProducts": applicable_products,
+                    "PromotionType": promotion_type,
+                    "IsFinalized": is_finalized,
+                    "ActivationChannel": activation_channel,
+                    "ExtendedEndDate": extended_end_date.strftime("%Y-%m-%d") if extended_end_date else ""
+                }
+                
+                # Send data to Zapier webhook
+                webhook_url = "https://hooks.zapier.com/hooks/catch/9480052/2197ir5/"
+                response = requests.post(webhook_url, json=promotion_data)
+                
+                # Handle the response
+                if response.status_code == 200:
+                    st.success("Promotion details successfully submitted!")
+                else:
+                    st.error(f"Failed to submit promotion details. Status code: {response.status_code}")
 
 if __name__ == "__main__":
     main()
