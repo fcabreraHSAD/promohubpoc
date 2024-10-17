@@ -90,6 +90,7 @@ def main():
                                      is_finalized, activation_channel, status)
                     st.success("Promotion details successfully submitted! Redirecting to Promotions List...")
                     st.session_state.menu = "Promotions List"
+                    st.experimental_rerun()
 
         # Link to pre-fill the form for testing
         st.markdown(
