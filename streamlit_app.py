@@ -9,7 +9,7 @@ def main():
     st.set_page_config(page_title="Promotion Management Hub", layout="wide")
 
     # Create a menu with two pages
-    menu = ["Promotion Form", "Zapier Interface"]
+    menu = ["Promotion Form", "Promotions List"]
     choice = st.sidebar.selectbox("Menu", menu)
 
     if choice == "Promotion Form":
@@ -76,12 +76,11 @@ def main():
                                  extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
                                  is_finalized, activation_channel, status)
 
-    elif choice == "Zapier Interface":
+    elif choice == "Promotions List":
         # Embed Zapier Interface
         st.markdown(
             """
-            <script type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
-            <zapier-interfaces-page-embed page-id='cm2dc1615000d148mpumlhsyw' no-background='false' allow-query-params='true' query-params='' style='max-width: 900px; height: 500px;'></zapier-interfaces-page-embed>
+            <iframe src="https://interfaces.zapier.com/embed/page/cm2dc1615000d148mpumlhsyw?&allowQueryParams=true" style='max-width: 900px; width: 100%; height: 500px;'></iframe>
             """,
             unsafe_allow_html=True
         )
