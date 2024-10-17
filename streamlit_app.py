@@ -77,10 +77,12 @@ def main():
                                  is_finalized, activation_channel, status)
 
     elif choice == "Promotions List":
-        # Embed Zapier Interface
+        # Embed Zapier Interface with optimized size and placement
         st.markdown(
             """
-            <iframe src="https://interfaces.zapier.com/embed/page/cm2dc1615000d148mpumlhsyw?&allowQueryParams=true" style='max-width: 900px; width: 100%; height: 500px;'></iframe>
+            <div style='display: flex; justify-content: center;'>
+                <iframe src="https://interfaces.zapier.com/embed/page/cm2dc1615000d148mpumlhsyw?noBackground=true&allowQueryParams=true" style='max-width: 900px; width: 90%; height: 600px; border: none;'></iframe>
+            </div>
             """,
             unsafe_allow_html=True
         )
