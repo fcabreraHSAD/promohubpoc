@@ -23,7 +23,7 @@ def main():
             st.header("Enter Promotion Details")
 
             # Generate system-generated Promotion ID with prefix 'PMH'
-            promotion_id = f"PMH{uuid.uuid4().hex[:8]}"
+            promotion_id = f"PMH{uuid.uuid4().int % 10000000:07d}"
 
             # Collect form data
             promo_name, coupon_code = st.columns(2)
