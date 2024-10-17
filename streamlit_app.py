@@ -44,14 +44,14 @@ def main():
 
             body_copy = st.text_area("Body Copy*", value="", help="Enter detailed text for the promotion", key='body_copy')
 
-            cta, link = st.columns(2)
+            link, cta = st.columns(2)
+            link = link.text_input("Link (URL)*", value="", help="URL or hyperlink associated with the CTA")
             cta = cta.text_input("CTA (Call to Action)", value="", help="Button label for the promotion")
-            link = link.text_input("Link (URL)*", value="", help="URL or hyperlink associated with the CTA") if cta else ""
 
             assets = st.text_input("Assets*", value="", help="Links to promotional assets like images or videos", key='assets')
             terms_conditions = st.text_input("Terms & Conditions*", value="", key='terms_conditions')
             target_audience = st.multiselect("Target Audience*", ["All Customers", "New Customers", "Returning Customers"], help="Select the target audience for the promotion")
-            discount_rate = st.text_input("Discount Rate (if applicable)", value="")
+            discount_rate = st.number_input("Discount Rate (if applicable)", min_value=0.0, step=0.1, value=0.0)
             status = "Upcoming"  # Default status
             store_name = st.multiselect("Store Name*", ["OBS", "EOS", "PM", "ThinQ"], help="Select applicable stores for the promotion")
             applicable_products = st.multiselect("Applicable Products or Categories", ["Fetch product data from the shared Google Sheet"], help="Select applicable products or categories for the promotion")
@@ -66,6 +66,25 @@ def main():
                 "Onsite via CMS", "Onsite via Personalization / AB Testing Tool", "PLA", "SEM"
             ])
             extended_end_date = st.date_input("Extended End Date (if applicable)", value=None)
+
+            # Button to pre-populate form data for testing
+            if st.button("Pre-Populate Test Data"):
+                st.session_state["promo_name"] = "Test Promo"
+                st.session_state["coupon_code"] = "TEST100"
+                st.session_state["title"] = "Test Title"
+                st.session_state["description"] = "Test Description"
+                st.session_state["body_copy"] = "This is a test body copy for the promotion."
+                st.session_state["link"] = "https://www.example.com"
+                st.session_state["cta"] = "Shop Now"
+                st.session_state["assets"] = "https://www.example.com/asset.jpg"
+                st.session_state["terms_conditions"] = "Terms and conditions apply."
+                st.session_state["target_audience"] = ["All Customers"]
+                st.session_state["discount_rate"] = 10.0
+                st.session_state["store_name"] = ["OBS", "PM"]
+                st.session_state["applicable_products"] = ["Fetch product data from the shared Google Sheet"]
+                st.session_state["promotion_type"] = "Single product instant discount"
+                st.session_state["is_finalized"] = True
+                st.experimental_rerun()
 
             # Form submission button
             submitted = st.form_submit_button("Submit Promotion")
@@ -84,6 +103,8 @@ def main():
                                      title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type,
                                      extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
                                      is_finalized, activation_channel, status)
+                    st.success("Promotion details successfully submitted! Redirecting to Promotions List...")
+                    st.experimental_rerun()
                     st.sidebar.selectbox("Menu", menu, index=1)
 
     elif choice == "Promotions List":
