@@ -12,7 +12,7 @@ def main():
         """
         <style>
             .stTextInput > div > input, .stTextArea > div > textarea {
-                background-color: #f0ece4;
+                background-color: rgb(14, 17, 23);
                 color: #000000;
                 border-radius: 5px;
                 border: 1px solid #a3afc4;
@@ -63,14 +63,14 @@ def main():
         <style>
             @media (prefers-color-scheme: light) {
                 .stTextInput > div > input, .stTextArea > div > textarea {
-                    background-color: #f0ece4;
+                    background-color: rgb(14, 17, 23);
                     color: #152542;
                     border-radius: 5px;
                     border: 1px solid #a3afc4;
                     padding: 8px;
                 }
                 .stForm > div {
-                    background-color: #fcfdfe;
+                    background-color: rgb(14, 17, 23);
                     padding: 20px;
                     border-radius: 10px;
                 }
@@ -95,14 +95,14 @@ def main():
             }
             @media (prefers-color-scheme: dark) {
                 .stTextInput > div > input, .stTextArea > div > textarea {
-                    background-color: #f0ece4;
+                    background-color: rgb(14, 17, 23);
                     color: #152542;
                     border-radius: 5px;
                     border: 1px solid #a3afc4;
                     padding: 8px;
                 }
                 .stForm > div {
-                    background-color: #f0ece4;
+                    background-color: rgb(14, 17, 23);
                     padding: 20px;
                     border-radius: 10px;
                 }
