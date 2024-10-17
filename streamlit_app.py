@@ -10,7 +10,7 @@ def main():
 
     # Create a menu with two pages
     menu = ["Promotion Form", "Promotions List"]
-    choice = st.sidebar.selectbox("Menu", menu)
+    choice = st.sidebar.selectbox("Menu", menu, index=menu.index(st.session_state.get("menu", "Promotion Form")))
 
     if choice == "Promotion Form":
         # Set page title and logo
@@ -89,8 +89,7 @@ def main():
                                      extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
                                      is_finalized, activation_channel, status)
                     st.success("Promotion details successfully submitted! Redirecting to Promotions List...")
-                    st.session_state["menu"] = "Promotions List"
-                    st.experimental_rerun()
+                    st.session_state.menu = "Promotions List"
 
         # Link to pre-fill the form for testing
         st.markdown(
