@@ -7,12 +7,27 @@ from datetime import datetime
 def main():
     st.set_page_config(page_title="Promotion Management Hub", layout="wide")
     
+    # Apply theme configuration
+    st.markdown(
+        """
+        <style>
+            [theme]
+            backgroundColor="#f0ece4";
+            secondaryBackgroundColor="#ffffff";
+            textColor="#000000";
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
     st.markdown("""
         <div style='text-align: center;'>
             <img src='https://media.us.lg.com/m/4f3e261da34f4910/original/lg_logo.svg' width='150'>
         </div>
-    "", unsafe_allow_html=True)
-    
+        """, unsafe_allow_html=True)
+    st.markdown("""
+        
+        """, unsafe_allow_html=True)
     st.title("Promotion Management Hub")
     st.write("By MarTech Solutions")
     
@@ -22,14 +37,14 @@ def main():
         <style>
             @media (prefers-color-scheme: light) {
                 .stTextInput > div > input, .stTextArea > div > textarea {
-                    background-color: #f6f3eb;
+                    background-color: #f0ece4;
                     color: #152542;
                     border-radius: 5px;
                     border: 1px solid #a3afc4;
                     padding: 8px;
                 }
                 .stForm > div {
-                    background-color: #f6f3eb;
+                    background-color: #fcfdfe;
                     padding: 20px;
                     border-radius: 10px;
                 }
@@ -52,17 +67,16 @@ def main():
                     padding: 8px;
                 }
             }
-            
             @media (prefers-color-scheme: dark) {
                 .stTextInput > div > input, .stTextArea > div > textarea {
-                    background-color: #1e1e2f;
-                    color: #e0e0e0;
+                    background-color: #f0ece4;
+                    color: #152542;
                     border-radius: 5px;
-                    border: 1px solid #555;
+                    border: 1px solid #a3afc4;
                     padding: 8px;
                 }
                 .stForm > div {
-                    background-color: #1e1e2f;
+                    background-color: #f0ece4;
                     padding: 20px;
                     border-radius: 10px;
                 }
@@ -78,15 +92,15 @@ def main():
                     background-color: #a60032;
                 }
                 .stSelectbox > div > select, .stMultiselect > div > div > select {
-                    background-color: #333;
-                    color: #e0e0e0;
+                    background-color: #e2e7f0;
+                    color: #3e547c;
                     border-radius: 5px;
-                    border: 1px solid #555;
+                    border: 1px solid #a3afc4;
                     padding: 8px;
                 }
             }
         </style>
-        "",
+        """,
         unsafe_allow_html=True
     )
     
