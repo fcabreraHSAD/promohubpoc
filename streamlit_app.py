@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 from datetime import datetime
 import uuid
+from flask import request
 
 # Promotion Management Hub Streamlit App
 
@@ -87,6 +88,10 @@ def main():
             unsafe_allow_html=True
         )
 
+    # Listen for incoming webhook data
+    if request.method == 'POST':
+        handle_webhook(request.get_json())
+
 def display_logo():
     st.markdown(
         """
@@ -150,6 +155,11 @@ def handle_submission(promotion_id, promo_name, start_date, end_date, display_st
             st.success("Promotion details successfully submitted!")
         else:
             st.error(f"Failed to submit promotion details. Status code: {response.status_code}")
+
+def handle_webhook(data):
+    if data:
+        st.write("Webhook data received:")
+        st.json(data)
 
 if __name__ == "__main__":
     main()
