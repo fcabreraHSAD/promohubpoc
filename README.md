@@ -1,4 +1,4 @@
-# promohubpoc# Promotion Management Hub Streamlit App - README
+# Promotion Management Hub Streamlit App - README
 
 ## Overview
 
