@@ -115,6 +115,8 @@ def main():
                     
                     # Update session state and rerun the app to navigate to the Promotions List page
                     st.session_state.menu = "Promotions List"
+                    
+                    # Trigger rerun
                     st.experimental_rerun()
 
     elif choice == "Promotions List":
