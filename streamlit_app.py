@@ -72,23 +72,263 @@ def main():
             extended_end_date = st.date_input("Extended End Date (if applicable)", value=None)
 
             # Button to pre-populate form data for testing
-            if st.form_submit_button("Pre-Populate Test Data"):
-                st.session_state["promo_name"] = "Test Promo"
-                st.session_state["coupon_code"] = "TEST100"
-                st.session_state["title"] = "Test Title"
-                st.session_state["description"] = "Test Description"
-                st.session_state["body_copy"] = "This is a test body copy for the promotion."
-                st.session_state["link"] = "https://www.example.com"
-                st.session_state["cta"] = "Shop Now"
-                st.session_state["assets"] = "https://www.example.com/asset.jpg"
-                st.session_state["terms_conditions"] = "Terms and conditions apply."
-                st.session_state["target_audience"] = ["All Customers"]
-                st.session_state["discount_rate"] = 10.0
-                st.session_state["store_name"] = ["OBS", "PM"]
-                st.session_state["applicable_products"] = ["Fetch product data from the shared Google Sheet"]
-                st.session_state["promotion_type"] = "Single product instant discount"
-                st.session_state["is_finalized"] = True
-                st.experimental_rerun()
+            if if st.button("Pre-Populate Test Data"):
+                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()                st.experimental_rerun()
 
             # Form submission button
             submitted = st.form_submit_button("Submit Promotion")
@@ -109,8 +349,24 @@ def main():
                                      is_finalized, activation_channel, status)
                     st.success("Promotion details successfully submitted! Redirecting to Promotions List...")
                     st.experimental_rerun()
-                    st.session_state["menu"] = "Promotions List"
-
+                    st.session_state.update({
+    "promo_name": "Test Promo",
+    "coupon_code": "TEST100",
+    "title": "Test Title",
+    "description": "Test Description",
+    "body_copy": "This is a test body copy for the promotion.",
+    "link": "https://www.example.com",
+    "cta": "Shop Now",
+    "assets": "https://www.example.com/asset.jpg",
+    "terms_conditions": "Terms and conditions apply.",
+    "target_audience": ["All Customers"],
+    "discount_rate": 10.0,
+    "store_name": ["OBS", "PM"],
+    "applicable_products": ["Fetch product data from the shared Google Sheet"],
+    "promotion_type": "Single product instant discount",
+    "is_finalized": True
+})
+st.experimental_rerun()
     elif choice == "Promotions List":
         # Embed Zapier Interface with optimized size and placement
         st.markdown(
