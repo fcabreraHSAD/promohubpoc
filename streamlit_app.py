@@ -206,6 +206,8 @@ def handle_submission(promotion_id, promo_name, start_date, end_date, display_st
     # Handle the response
     if response.status_code == 200:
         st.success("Promotion details successfully submitted!")
+        # Switch to the "Promotions List" page after successful submission
+        st.session_state.menu = "Promotions List" 
     else:
         st.error(f"Failed to submit promotion details. Status code: {response.status_code}")
 
