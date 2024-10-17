@@ -112,6 +112,9 @@ def main():
                                      extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
                                      is_finalized, activation_channel, status)
                     st.success("Promotion details successfully submitted! Redirecting to Promotions List...")
+                    for key in list(st.session_state.keys()):
+                        if key != 'menu':
+                            del st.session_state[key]
                     st.session_state.menu = "Promotions List"
                     st.write("Redirecting... Please use the sidebar to navigate.")
 
