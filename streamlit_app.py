@@ -12,10 +12,10 @@ def main():
         <div style='text-align: center;'>
             <img src='https://media.us.lg.com/m/4f3e261da34f4910/original/lg_logo.svg' width='150'>
         </div>
-        """, unsafe_allow_html=True)
+        "", unsafe_allow_html=True)
     st.markdown("""
         
-        """, unsafe_allow_html=True)
+        "", unsafe_allow_html=True)
     st.title("Promotion Management Hub")
     st.write("By MarTech Solutions")
     
@@ -23,98 +23,14 @@ def main():
     st.markdown(
         """
         <style>
-            <style>
-    @media (prefers-color-scheme: light) {
-        .stTextInput > div > input, .stTextArea > div > textarea {
-            background-color: #f6f3eb;
-            color: #152542;
-            border-radius: 5px;
-            border: 1px solid #a3afc4;
-            padding: 8px;
-        }
-        .stForm > div {
-            background-color: #f6f3eb;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .stButton > button {
-            background-color: #ea1917;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .stButton > button:hover {
-            background-color: #a60032;
-        }
-        .stSelectbox > div > select, .stMultiselect > div > div > select {
-            background-color: #e2e7f0;
-            color: #3e547c;
-            border-radius: 5px;
-            border: 1px solid #a3afc4;
-            padding: 8px;
-        }
-    }
-    
-    @media (prefers-color-scheme: dark) {
-        .stTextInput > div > input, .stTextArea > div > textarea {
-            background-color: #1e1e2f;
-            color: #e0e0e0;
-            border-radius: 5px;
-            border: 1px solid #555;
-            padding: 8px;
-        }
-        .stForm > div {
-            background-color: #1e1e2f;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .stButton > button {
-            background-color: #ea1917;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .stButton > button:hover {
-            background-color: #a60032;
-        }
-        .stSelectbox > div > select, .stMultiselect > div > div > select {
-            background-color: #333;
-            color: #e0e0e0;
-            border-radius: 5px;
-            border: 1px solid #555;
-            padding: 8px;
-        }
-    }
-</style>
-}
-                .stForm > div {
-                    background-color: rgb(14, 17, 23);
-                    padding: 20px;
-                    border-radius: 10px;
-                }
-                .stButton > button {
-                    background-color: #ea1917;
-                    color: #ffffff;
-                    border: none;
-                    padding: 10px 20px;
-                    border-radius: 5px;
-                    font-weight: bold;
-                }
-                .stButton > button:hover {
-                    background-color: #a60032;
-                }
-                .stSelectbox > div > select, .stMultiselect > div > div > select {
-                    background-color: #e2e7f0;
-                    color: #3e547c;
+            @media (prefers-color-scheme: light) {
+                .stTextInput > div > input, .stTextArea > div > textarea {
+                    background-color: #f6f3eb;
+                    color: #152542;
                     border-radius: 5px;
                     border: 1px solid #a3afc4;
                     padding: 8px;
                 }
-            }
                 .stForm > div {
                     background-color: #f6f3eb;
                     padding: 20px;
@@ -139,8 +55,41 @@ def main():
                     padding: 8px;
                 }
             }
+            
+            @media (prefers-color-scheme: dark) {
+                .stTextInput > div > input, .stTextArea > div > textarea {
+                    background-color: #1e1e2f;
+                    color: #e0e0e0;
+                    border-radius: 5px;
+                    border: 1px solid #555;
+                    padding: 8px;
+                }
+                .stForm > div {
+                    background-color: #1e1e2f;
+                    padding: 20px;
+                    border-radius: 10px;
+                }
+                .stButton > button {
+                    background-color: #ea1917;
+                    color: #ffffff;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    font-weight: bold;
+                }
+                .stButton > button:hover {
+                    background-color: #a60032;
+                }
+                .stSelectbox > div > select, .stMultiselect > div > div > select {
+                    background-color: #333;
+                    color: #e0e0e0;
+                    border-radius: 5px;
+                    border: 1px solid #555;
+                    padding: 8px;
+                }
+            }
         </style>
-        """,
+        "",
         unsafe_allow_html=True
     )
     
