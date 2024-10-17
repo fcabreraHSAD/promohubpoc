@@ -6,17 +6,41 @@ from datetime import datetime
 
 def main():
     st.set_page_config(page_title="Promotion Management Hub", layout="wide")
-
-    # Load external theme configuration from the provided .toml file
-    theme_url = "https://promopoc.streamlit.app/config.toml"
-    st.markdown(f'<link rel="stylesheet" type="text/css" href="{theme_url}">', unsafe_allow_html=True)
     
-    # Apply theme configuration
+    # Apply theme configuration inline
     st.markdown(
         """
         <style>
-                        secondaryBackgroundColor="#ffffff";
-            textColor="#000000";
+            .stTextInput > div > input, .stTextArea > div > textarea {
+                background-color: #f0ece4;
+                color: #000000;
+                border-radius: 5px;
+                border: 1px solid #a3afc4;
+                padding: 8px;
+            }
+            .stForm > div {
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 10px;
+            }
+            .stButton > button {
+                background-color: #ea1917;
+                color: #ffffff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-weight: bold;
+            }
+            .stButton > button:hover {
+                background-color: #a60032;
+            }
+            .stSelectbox > div > select, .stMultiselect > div > div > select {
+                background-color: #e2e7f0;
+                color: #3e547c;
+                border-radius: 5px;
+                border: 1px solid #a3afc4;
+                padding: 8px;
+            }
         </style>
         """,
         unsafe_allow_html=True
