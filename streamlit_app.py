@@ -72,7 +72,8 @@ def main():
             extended_end_date = st.date_input("Extended End Date (if applicable)", value=None)
 
             # Button to pre-populate form data for testing
-            if st.button("Pre-Populate Test Data"):
+            with st.form("pre_populate_form"):
+            if st.form_submit_button("Pre-Populate Test Data"):
                 st.session_state.update({
                     "promo_name": "Test Promo",
                     "coupon_code": "TEST100",
