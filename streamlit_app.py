@@ -8,69 +8,83 @@ import uuid
 def main():
     st.set_page_config(page_title="Promotion Management Hub", layout="wide")
 
-    # Set page title and logo
-    display_logo()
-    st.title("Promotion Management Hub")
-    st.write("By MarTech Solutions")
+    # Create a menu with two pages
+    menu = ["Promotion Form", "Zapier Interface"]
+    choice = st.sidebar.selectbox("Menu", menu)
 
-    # Form to collect promotion data
-    with st.form("promotion_form", clear_on_submit=True):
-        st.header("Enter Promotion Details")
+    if choice == "Promotion Form":
+        # Set page title and logo
+        display_logo()
+        st.title("Promotion Management Hub")
+        st.write("By MarTech Solutions")
 
-        # Generate system-generated Promotion ID with prefix 'PMH'
-        promotion_id = f"PMH{uuid.uuid4().hex[:8]}"
+        # Form to collect promotion data
+        with st.form("promotion_form", clear_on_submit=True):
+            st.header("Enter Promotion Details")
 
-        # Collect form data
-        promo_name, coupon_code = st.columns(2)
-        promo_name = promo_name.text_input("Promo Name*", value="", help="Enter the name of the promotion")
-        coupon_code = coupon_code.text_input("Coupon Code (if applicable)", value="")
+            # Generate system-generated Promotion ID with prefix 'PMH'
+            promotion_id = f"PMH{uuid.uuid4().hex[:8]}"
 
-        start_date, end_date = st.columns(2)
-        start_date = start_date.date_input("Start Date*", value=datetime.now())
-        end_date = end_date.date_input("End Date*", value=datetime.now())
+            # Collect form data
+            promo_name, coupon_code = st.columns(2)
+            promo_name = promo_name.text_input("Promo Name*", value="", help="Enter the name of the promotion")
+            coupon_code = coupon_code.text_input("Coupon Code (if applicable)", value="")
 
-        display_start_date, display_end_date = st.columns(2)
-        display_start_date = display_start_date.date_input("Display Start Date*", value=datetime.now())
-        display_end_date = display_end_date.date_input("Display End Date*", value=datetime.now())
+            start_date, end_date = st.columns(2)
+            start_date = start_date.date_input("Start Date*", value=datetime.now())
+            end_date = end_date.date_input("End Date*", value=datetime.now())
 
-        title, description = st.columns(2)
-        title = title.text_input("Title*", value="", max_chars=60, help="Enter the title of the promotion (Maximum 60 characters)")
-        description = description.text_area("Description", value="", max_chars=100, help="Enter the description of any free gift offered in the promotion (Maximum 100 characters). Example: Free tote bag with 100.00 USD purchase.")
+            display_start_date, display_end_date = st.columns(2)
+            display_start_date = display_start_date.date_input("Display Start Date*", value=datetime.now())
+            display_end_date = display_end_date.date_input("Display End Date*", value=datetime.now())
 
-        body_copy = st.text_area("Body Copy*", value="", help="Enter detailed text for the promotion", key='body_copy')
+            title, description = st.columns(2)
+            title = title.text_input("Title*", value="", max_chars=60, help="Enter the title of the promotion (Maximum 60 characters)")
+            description = description.text_area("Description", value="", max_chars=100, help="Enter the description of any free gift offered in the promotion (Maximum 100 characters). Example: Free tote bag with 100.00 USD purchase.")
 
-        cta, link = st.columns(2)
-        cta = cta.text_input("CTA (Call to Action)", value="", help="Button label for the promotion")
-        link = link.text_input("Link (URL)*", value="", help="URL or hyperlink associated with the CTA") if cta else ""
+            body_copy = st.text_area("Body Copy*", value="", help="Enter detailed text for the promotion", key='body_copy')
 
-        assets = st.text_input("Assets*", value="", help="Links to promotional assets like images or videos", key='assets')
-        terms_conditions = st.text_input("Terms & Conditions*", value="", key='terms_conditions')
-        target_audience = st.multiselect("Target Audience*", ["All Customers", "New Customers", "Returning Customers"], help="Select the target audience for the promotion")
-        discount_rate = st.text_input("Discount Rate (if applicable)", value="")
-        status = "Upcoming"  # Default status
-        store_name = st.multiselect("Store Name*", ["OBS", "EOS", "PM", "ThinQ"], help="Select applicable stores for the promotion")
-        applicable_products = st.multiselect("Applicable Products or Categories", ["Fetch product data from the shared Google Sheet"], help="Select applicable products or categories for the promotion")
-        promotion_type = st.selectbox("Promotion Type*", [
-            "Product package Rebate", "Product package instant discount", "Package with variable discount", "Single product rebate",
-            "Single product instant discount", "Product bundle", "Value-add", "Cross-sells", "Upsell", "Add-ons", "Buy one, get one free",
-            "Buy more, save more", "Promo code", "Subscriptions", "Store Credit", "Rewards points"
-        ])
-        is_finalized = st.checkbox("Is Finalized*", value=False, help="Check if the promotion details are finalized")
-        activation_channel = st.multiselect("Activation Channel", [
-            "Email Marketing", "Social Media Platforms", "SMS/Text Message", "Affiliate Partners", "Display",
-            "Onsite via CMS", "Onsite via Personalization / AB Testing Tool", "PLA", "SEM"
-        ])
-        extended_end_date = st.date_input("Extended End Date (if applicable)", value=None)
+            cta, link = st.columns(2)
+            cta = cta.text_input("CTA (Call to Action)", value="", help="Button label for the promotion")
+            link = link.text_input("Link (URL)*", value="", help="URL or hyperlink associated with the CTA") if cta else ""
 
-        # Form submission button
-        submitted = st.form_submit_button("Submit Promotion")
+            assets = st.text_input("Assets*", value="", help="Links to promotional assets like images or videos", key='assets')
+            terms_conditions = st.text_input("Terms & Conditions*", value="", key='terms_conditions')
+            target_audience = st.multiselect("Target Audience*", ["All Customers", "New Customers", "Returning Customers"], help="Select the target audience for the promotion")
+            discount_rate = st.text_input("Discount Rate (if applicable)", value="")
+            status = "Upcoming"  # Default status
+            store_name = st.multiselect("Store Name*", ["OBS", "EOS", "PM", "ThinQ"], help="Select applicable stores for the promotion")
+            applicable_products = st.multiselect("Applicable Products or Categories", ["Fetch product data from the shared Google Sheet"], help="Select applicable products or categories for the promotion")
+            promotion_type = st.selectbox("Promotion Type*", [
+                "Product package Rebate", "Product package instant discount", "Package with variable discount", "Single product rebate",
+                "Single product instant discount", "Product bundle", "Value-add", "Cross-sells", "Upsell", "Add-ons", "Buy one, get one free",
+                "Buy more, save more", "Promo code", "Subscriptions", "Store Credit", "Rewards points"
+            ])
+            is_finalized = st.checkbox("Is Finalized*", value=False, help="Check if the promotion details are finalized")
+            activation_channel = st.multiselect("Activation Channel", [
+                "Email Marketing", "Social Media Platforms", "SMS/Text Message", "Affiliate Partners", "Display",
+                "Onsite via CMS", "Onsite via Personalization / AB Testing Tool", "PLA", "SEM"
+            ])
+            extended_end_date = st.date_input("Extended End Date (if applicable)", value=None)
 
-        if submitted:
-            handle_submission(promotion_id, promo_name, start_date, end_date, display_start_date, display_end_date,
-                             title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type,
-                             extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
-                             is_finalized, activation_channel, status)
+            # Form submission button
+            submitted = st.form_submit_button("Submit Promotion")
 
+            if submitted:
+                handle_submission(promotion_id, promo_name, start_date, end_date, display_start_date, display_end_date,
+                                 title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type,
+                                 extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
+                                 is_finalized, activation_channel, status)
+
+    elif choice == "Zapier Interface":
+        # Embed Zapier Interface
+        st.markdown(
+            """
+            <script type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
+            <zapier-interfaces-page-embed page-id='cm2dc1615000d148mpumlhsyw' no-background='false' allow-query-params='true' query-params='' style='max-width: 900px; height: 500px;'></zapier-interfaces-page-embed>
+            """,
+            unsafe_allow_html=True
+        )
 
 def display_logo():
     st.markdown(
@@ -80,7 +94,6 @@ def display_logo():
         </div>
         """, unsafe_allow_html=True
     )
-
 
 def handle_submission(promotion_id, promo_name, start_date, end_date, display_start_date, display_end_date,
                       title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type,
@@ -136,7 +149,6 @@ def handle_submission(promotion_id, promo_name, start_date, end_date, display_st
             st.success("Promotion details successfully submitted!")
         else:
             st.error(f"Failed to submit promotion details. Status code: {response.status_code}")
-
 
 if __name__ == "__main__":
     main()
