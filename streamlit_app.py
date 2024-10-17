@@ -96,46 +96,26 @@ def main():
 
             # Form submission button
             submitted = st.form_submit_button("Submit Promotion")
-if submitted:
-    missing_fields = validate_fields(
-        promo_name, start_date, end_date, display_start_date, display_end_date,
-        title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type, extended_end_date
-    )
-    if missing_fields:
-        for field in missing_fields:
-            st.warning(f"Please fill out the field: {field}")
-        st.error("Please fill out all required fields before submitting the form.")
-    else:
-        handle_submission(promotion_id, promo_name, start_date, end_date, display_start_date, display_end_date,
-                         title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type,
-                         extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
-                         is_finalized, activation_channel, status)
-        st.success("Promotion details successfully submitted! Redirecting to Promotions List...")
-        
-        # Update session state and rerun the app to navigate to the Promotions List page
-        st.session_state.menu = "Promotions List"
-        st.experimental_rerun()
-
-#            if submitted:
- #               missing_fields = validate_fields(
-  #                  promo_name, start_date, end_date, display_start_date, display_end_date,
-   #                 title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type, extended_end_date
-    #            )
-     #           if missing_fields:
-      #              for field in missing_fields:
-       #                 st.warning(f"Please fill out the field: {field}")
-        #            st.error("Please fill out all required fields before submitting the form.")
-         #       else:
-          #          handle_submission(promotion_id, promo_name, start_date, end_date, display_start_date, display_end_date,
-           #                          title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type,
-            #                         extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
-             #                        is_finalized, activation_channel, status)
-              #      st.success("Promotion details successfully submitted! Redirecting to Promotions List...")
-               #     for key in list(st.session_state.keys()):
-                #        if key != 'menu':
-                 #           del st.session_state[key]
-                  #  st.session_state.menu = "Promotions List"
-                   # st.write("Redirecting... Please use the sidebar to navigate.")
+            if submitted:
+                missing_fields = validate_fields(
+                    promo_name, start_date, end_date, display_start_date, display_end_date,
+                    title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type, extended_end_date
+                )
+                if missing_fields:
+                    for field in missing_fields:
+                        st.warning(f"Please fill out the field: {field}")
+                    st.error("Please fill out all required fields before submitting the form.")
+                else:
+                    handle_submission(promotion_id, promo_name, start_date, end_date, display_start_date, display_end_date,
+                                     title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type,
+                                     extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
+                                     is_finalized, activation_channel, status)
+                    st.success("Promotion details successfully submitted! Redirecting to Promotions List...")
+                    for key in list(st.session_state.keys()):
+                        if key != 'menu':
+                            del st.session_state[key]
+                    st.session_state.menu = "Promotions List"
+                    st.write("Redirecting... Please use the sidebar to navigate.")
 
     elif choice == "Promotions List":
         # Embed Zapier Interface with optimized size and placement
