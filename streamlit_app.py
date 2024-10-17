@@ -6,14 +6,16 @@ from datetime import datetime
 
 def main():
     st.set_page_config(page_title="Promotion Management Hub", layout="wide")
+
+    # Load external theme configuration from the provided .toml file
+    theme_url = "https://promopoc.streamlit.app/config.toml"
+    st.markdown(f'<link rel="stylesheet" type="text/css" href="{theme_url}">', unsafe_allow_html=True)
     
     # Apply theme configuration
     st.markdown(
         """
         <style>
-            [theme]
-            backgroundColor="#f0ece4";
-            secondaryBackgroundColor="#ffffff";
+                        secondaryBackgroundColor="#ffffff";
             textColor="#000000";
         </style>
         """,
