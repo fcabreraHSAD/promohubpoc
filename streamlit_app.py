@@ -11,8 +11,15 @@ def main():
     # Create a menu with two pages
     menu = ["Promotion Form", "Promotions List"]
     choice = st.sidebar.selectbox("Menu", menu, index=menu.index(st.session_state.get("menu", "Promotion Form")))
+    
     if choice == "Promotions List" and st.session_state.get("menu") == "Promotion Form":
-        st.session_state.menu = "Promotion List"
+        st.session_state.menu = "Promotions List"
+
+    # Handle form submission rerun
+    if st.session_state.get("submitted", False):
+        st.session_state.submitted = False  # Reset the flag
+        st.session_state.menu = "Promotions List"
+        st.experimental_rerun()
 
     if choice == "Promotion Form":
         # Set page title and logo
@@ -113,11 +120,8 @@ def main():
                                      is_finalized, activation_channel, status)
                     st.success("Promotion details successfully submitted! Redirecting to Promotions List...")
                     
-                    # Update session state and rerun the app to navigate to the Promotions List page
-                    st.session_state.menu = "Promotions List"
-                    
-                    # Trigger rerun
-                    st.experimental_rerun()
+                    # Set session state to trigger rerun
+                    st.session_state.submitted = True
 
     elif choice == "Promotions List":
         # Embed Zapier Interface with optimized size and placement
