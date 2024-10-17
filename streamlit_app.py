@@ -16,39 +16,73 @@ def main():
     st.title("Promotion Management Hub")
     st.write("By MarTech Solutions")
     
-    # Apply theme colors as specified by user
+    # Apply light and dark theme based on user settings
     st.markdown(
         """
         <style>
-            .stTextInput > div > input, .stTextArea > div > textarea {
-                background-color: #f0ece4;
-                color: #152542;
-                border-radius: 5px;
-                border: 1px solid #a3afc4;
-                padding: 8px;
+            @media (prefers-color-scheme: light) {
+                .stTextInput > div > input, .stTextArea > div > textarea {
+                    background-color: #f0ece4;
+                    color: #152542;
+                    border-radius: 5px;
+                    border: 1px solid #a3afc4;
+                    padding: 8px;
+                }
+                .stForm > div {
+                    background-color: #fcfdfe;
+                    padding: 20px;
+                    border-radius: 10px;
+                }
+                .stButton > button {
+                    background-color: #ea1917;
+                    color: #ffffff;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    font-weight: bold;
+                }
+                .stButton > button:hover {
+                    background-color: #a60032;
+                }
+                .stSelectbox > div > select, .stMultiselect > div > div > select {
+                    background-color: #e2e7f0;
+                    color: #3e547c;
+                    border-radius: 5px;
+                    border: 1px solid #a3afc4;
+                    padding: 8px;
+                }
             }
-            .stForm > div {
-                background-color: #fcfdfe;
-                padding: 20px;
-                border-radius: 10px;
-            }
-            .stButton > button {
-                background-color: #ea1917;
-                color: #ffffff;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                font-weight: bold;
-            }
-            .stButton > button:hover {
-                background-color: #a60032;
-            }
-            .stSelectbox > div > select, .stMultiselect > div > div > select {
-                background-color: #e2e7f0;
-                color: #3e547c;
-                border-radius: 5px;
-                border: 1px solid #a3afc4;
-                padding: 8px;
+            @media (prefers-color-scheme: dark) {
+                .stTextInput > div > input, .stTextArea > div > textarea {
+                    background-color: #333333;
+                    color: #ffffff;
+                    border-radius: 5px;
+                    border: 1px solid #555555;
+                    padding: 8px;
+                }
+                .stForm > div {
+                    background-color: #444444;
+                    padding: 20px;
+                    border-radius: 10px;
+                }
+                .stButton > button {
+                    background-color: #444444;
+                    color: #ffffff;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    font-weight: bold;
+                }
+                .stButton > button:hover {
+                    background-color: #666666;
+                }
+                .stSelectbox > div > select, .stMultiselect > div > div > select {
+                    background-color: #555555;
+                    color: #ffffff;
+                    border-radius: 5px;
+                    border: 1px solid #777777;
+                    padding: 8px;
+                }
             }
         </style>
         """,
@@ -131,7 +165,6 @@ def main():
             if missing_fields:
                 for field in missing_fields:
                     st.warning(f"Please fill out the field: {field}")
-                st.error("Please fill out all required fields before submitting the form.")
                 st.error("Please fill out all required fields before submitting the form.")
             else:
                 # Prepare the data for webhook submission
