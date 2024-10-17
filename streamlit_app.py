@@ -3,8 +3,23 @@ import requests
 from datetime import datetime
 
 # Promotion Management Hub Streamlit App
+
 def main():
     st.set_page_config(page_title="Promotion Management Hub", layout="wide")
+    
+    # Apply theme configuration
+    st.markdown(
+        """
+        <style>
+            [theme]
+            backgroundColor="#f0ece4";
+            secondaryBackgroundColor="#ffffff";
+            textColor="#000000";
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
     st.markdown("""
         <div style='text-align: center;'>
             <img src='https://media.us.lg.com/m/4f3e261da34f4910/original/lg_logo.svg' width='150'>
