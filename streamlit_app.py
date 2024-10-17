@@ -73,6 +73,24 @@ def main():
 
             # Button to pre-populate form data for testing
             if st.button("Pre-Populate Test Data"):
+    st.session_state.update({
+        "promo_name": "Test Promo",
+        "coupon_code": "TEST100",
+        "title": "Test Title",
+        "description": "Test Description",
+        "body_copy": "This is a test body copy for the promotion.",
+        "link": "https://www.example.com",
+        "cta": "Shop Now",
+        "assets": "https://www.example.com/asset.jpg",
+        "terms_conditions": "Terms and conditions apply.",
+        "target_audience": ["All Customers"],
+        "discount_rate": 10.0,
+        "store_name": ["OBS", "PM"],
+        "applicable_products": ["Fetch product data from the shared Google Sheet"],
+        "promotion_type": "Single product instant discount",
+        "is_finalized": True
+    })
+    st.experimental_rerun()
                 st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
@@ -90,7 +108,7 @@ def main():
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
+                st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
     "title": "Test Title",
@@ -107,7 +125,7 @@ st.experimental_rerun()                st.session_state.update({
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
+                st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
     "title": "Test Title",
@@ -124,7 +142,7 @@ st.experimental_rerun()                st.session_state.update({
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
+                st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
     "title": "Test Title",
@@ -141,7 +159,7 @@ st.experimental_rerun()                st.session_state.update({
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
+                st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
     "title": "Test Title",
@@ -158,7 +176,7 @@ st.experimental_rerun()                st.session_state.update({
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
+                st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
     "title": "Test Title",
@@ -175,7 +193,7 @@ st.experimental_rerun()                st.session_state.update({
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
+                st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
     "title": "Test Title",
@@ -192,7 +210,7 @@ st.experimental_rerun()                st.session_state.update({
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
+                st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
     "title": "Test Title",
@@ -209,7 +227,7 @@ st.experimental_rerun()                st.session_state.update({
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
+                st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
     "title": "Test Title",
@@ -226,7 +244,7 @@ st.experimental_rerun()                st.session_state.update({
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
+                st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
     "title": "Test Title",
@@ -243,7 +261,7 @@ st.experimental_rerun()                st.session_state.update({
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
+                st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
     "title": "Test Title",
@@ -260,7 +278,7 @@ st.experimental_rerun()                st.session_state.update({
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
+                st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
     "title": "Test Title",
@@ -277,7 +295,7 @@ st.experimental_rerun()                st.session_state.update({
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
+                st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
     "title": "Test Title",
@@ -294,7 +312,7 @@ st.experimental_rerun()                st.session_state.update({
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
+                st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
     "title": "Test Title",
@@ -311,24 +329,7 @@ st.experimental_rerun()                st.session_state.update({
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()                st.session_state.update({
-    "promo_name": "Test Promo",
-    "coupon_code": "TEST100",
-    "title": "Test Title",
-    "description": "Test Description",
-    "body_copy": "This is a test body copy for the promotion.",
-    "link": "https://www.example.com",
-    "cta": "Shop Now",
-    "assets": "https://www.example.com/asset.jpg",
-    "terms_conditions": "Terms and conditions apply.",
-    "target_audience": ["All Customers"],
-    "discount_rate": 10.0,
-    "store_name": ["OBS", "PM"],
-    "applicable_products": ["Fetch product data from the shared Google Sheet"],
-    "promotion_type": "Single product instant discount",
-    "is_finalized": True
-})
-st.experimental_rerun()                st.experimental_rerun()
+                
 
             # Form submission button
             submitted = st.form_submit_button("Submit Promotion")
@@ -348,7 +349,7 @@ st.experimental_rerun()                st.experimental_rerun()
                                      extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
                                      is_finalized, activation_channel, status)
                     st.success("Promotion details successfully submitted! Redirecting to Promotions List...")
-                    st.experimental_rerun()
+                    
                     st.session_state.update({
     "promo_name": "Test Promo",
     "coupon_code": "TEST100",
@@ -366,7 +367,7 @@ st.experimental_rerun()                st.experimental_rerun()
     "promotion_type": "Single product instant discount",
     "is_finalized": True
 })
-st.experimental_rerun()
+
     elif choice == "Promotions List":
         # Embed Zapier Interface with optimized size and placement
         st.markdown(
