@@ -207,7 +207,7 @@ def handle_submission(promotion_id, promo_name, start_date, end_date, display_st
     if response.status_code == 200:
         st.success("Promotion details successfully submitted!")
         st.session_state.menu = "Promotions List" 
-        st.experimental_rerun() # Force a rerun to update the page
+        st.rerun() # Force a rerun to update the page
     else:
         st.error(f"Failed to submit promotion details. Status code: {response.status_code}")
 
