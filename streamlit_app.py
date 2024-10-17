@@ -11,6 +11,8 @@ def main():
     # Create a menu with two pages
     menu = ["Promotion Form", "Promotions List"]
     choice = st.sidebar.selectbox("Menu", menu, index=menu.index(st.session_state.get("menu", "Promotion Form")))
+    if choice == "Promotions List" and st.session_state.get("menu") == "Promotion Form":
+        st.session_state.menu = "Promotion List"
 
     if choice == "Promotion Form":
         # Set page title and logo
@@ -90,7 +92,7 @@ def main():
                                      is_finalized, activation_channel, status)
                     st.success("Promotion details successfully submitted! Redirecting to Promotions List...")
                     st.session_state.menu = "Promotions List"
-                    st.experimental_rerun()
+                    st.write("Redirecting... Please use the sidebar to navigate.")
 
         # Link to pre-fill the form for testing
         st.markdown(
