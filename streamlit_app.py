@@ -56,13 +56,12 @@ def main():
                 }
             }
             @media (prefers-color-scheme: dark) {
-                .stTextInput > div > input, .stTextArea > div > textarea {
-                    background-color: #f6f3eb;
-                    color: #152542;
-                    border-radius: 5px;
-                    border: 1px solid #a3afc4;
-                    padding: 8px;
-                }
+    .stForm > div {
+        background-color: rgb(14, 17, 23) !important;
+        padding: 20px;
+        border-radius: 10px;
+    }
+}
                 .stForm > div {
                     background-color: rgb(14, 17, 23);
                     padding: 20px;
