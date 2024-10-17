@@ -20,6 +20,27 @@ def main():
         st.title("Promotion Management Hub")
         st.write("By MarTech Solutions")
 
+        # Button to pre-fill the form for testing purposes
+        if st.button("Pre-fill Form for Testing"):
+            st.session_state.update({
+                "promo_name": "Test Promo",
+                "coupon_code": "TEST100",
+                "title": "Test Title",
+                "description": "Test Description",
+                "body_copy": "This is a test body copy for the promotion.",
+                "link": "https://www.example.com",
+                "cta": "Shop Now",
+                "assets": "https://www.example.com/asset.jpg",
+                "terms_conditions": "Terms and conditions apply.",
+                "target_audience": ["All Customers"],
+                "discount_rate": 10.0,
+                "store_name": ["OBS", "PM"],
+                "applicable_products": ["Fetch product data from the shared Google Sheet"],
+                "promotion_type": "Single product instant discount",
+                "is_finalized": True,
+                "activation_channel": ["Social Media Platforms"]
+            })
+
         # Form to collect promotion data
         with st.form("promotion_form", clear_on_submit=False):
             st.header("Enter Promotion Details")
@@ -93,14 +114,6 @@ def main():
                     st.success("Promotion details successfully submitted! Redirecting to Promotions List...")
                     st.session_state.menu = "Promotions List"
                     st.write("Redirecting... Please use the sidebar to navigate.")
-
-        # Link to pre-fill the form for testing
-        st.markdown(
-            """
-            <a href="?promo_name=Test+Promo&coupon_code=TEST100&title=Test+Title&description=Test+Description&body_copy=This+is+a+test+body+copy+for+the+promotion.&link=https%3A%2F%2Fwww.example.com&cta=Shop+Now&assets=https%3A%2F%2Fwww.example.com%2Fasset.jpg&terms_conditions=Terms+and+conditions+apply.&target_audience=All+Customers&discount_rate=10.0&store_name=OBS&store_name=PM&promotion_type=Single+product+instant+discount&is_finalized=True" target="_self">Pre-fill Form for Testing</a>
-            """,
-            unsafe_allow_html=True
-        )
 
     elif choice == "Promotions List":
         # Embed Zapier Interface with optimized size and placement
