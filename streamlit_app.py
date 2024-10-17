@@ -12,7 +12,7 @@ def main():
         """
         <style>
             .stTextInput > div > input, .stTextArea > div > textarea {
-                background-color: rgb(14, 17, 23);
+                background-color: #f6f3eb;
                 color: #000000;
                 border-radius: 5px;
                 border: 1px solid #a3afc4;
@@ -63,7 +63,39 @@ def main():
         <style>
             @media (prefers-color-scheme: light) {
                 .stTextInput > div > input, .stTextArea > div > textarea {
-                    background-color: rgb(14, 17, 23);
+                    background-color: #f6f3eb;
+                    color: #152542;
+                    border-radius: 5px;
+                    border: 1px solid #a3afc4;
+                    padding: 8px;
+                }
+                .stForm > div {
+                    background-color: #f6f3eb;
+                    padding: 20px;
+                    border-radius: 10px;
+                }
+                .stButton > button {
+                    background-color: #ea1917;
+                    color: #ffffff;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    font-weight: bold;
+                }
+                .stButton > button:hover {
+                    background-color: #a60032;
+                }
+                .stSelectbox > div > select, .stMultiselect > div > div > select {
+                    background-color: #e2e7f0;
+                    color: #3e547c;
+                    border-radius: 5px;
+                    border: 1px solid #a3afc4;
+                    padding: 8px;
+                }
+            }
+            @media (prefers-color-scheme: dark) {
+                .stTextInput > div > input, .stTextArea > div > textarea {
+                    background-color: #f6f3eb;
                     color: #152542;
                     border-radius: 5px;
                     border: 1px solid #a3afc4;
@@ -93,16 +125,8 @@ def main():
                     padding: 8px;
                 }
             }
-            @media (prefers-color-scheme: dark) {
-                .stTextInput > div > input, .stTextArea > div > textarea {
-                    background-color: rgb(14, 17, 23);
-                    color: #152542;
-                    border-radius: 5px;
-                    border: 1px solid #a3afc4;
-                    padding: 8px;
-                }
                 .stForm > div {
-                    background-color: rgb(14, 17, 23);
+                    background-color: #f6f3eb;
                     padding: 20px;
                     border-radius: 10px;
                 }
