@@ -2,7 +2,6 @@ import streamlit as st
 import requests
 from datetime import datetime
 import uuid
-from flask import request
 
 # Promotion Management Hub Streamlit App
 
@@ -88,10 +87,7 @@ def main():
             unsafe_allow_html=True
         )
 
-    # Listen for incoming webhook data
-    if request.method == 'POST':
-        handle_webhook(request.get_json())
-
+    
 def display_logo():
     st.markdown(
         """
