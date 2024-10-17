@@ -7,45 +7,7 @@ from datetime import datetime
 def main():
     st.set_page_config(page_title="Promotion Management Hub", layout="wide")
     
-    # Apply theme configuration inline
-    st.markdown(
-        """
-        <style>
-            .stTextInput > div > input, .stTextArea > div > textarea {
-                background-color: #f6f3eb;
-                color: #000000;
-                border-radius: 5px;
-                border: 1px solid #a3afc4;
-                padding: 8px;
-            }
-            .stForm > div {
-                background-color: #ffffff;
-                padding: 20px;
-                border-radius: 10px;
-            }
-            .stButton > button {
-                background-color: #ea1917;
-                color: #ffffff;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                font-weight: bold;
-            }
-            .stButton > button:hover {
-                background-color: #a60032;
-            }
-            .stSelectbox > div > select, .stMultiselect > div > div > select {
-                background-color: #e2e7f0;
-                color: #3e547c;
-                border-radius: 5px;
-                border: 1px solid #a3afc4;
-                padding: 8px;
-            }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
+    
     st.markdown("""
         <div style='text-align: center;'>
             <img src='https://media.us.lg.com/m/4f3e261da34f4910/original/lg_logo.svg' width='150'>
