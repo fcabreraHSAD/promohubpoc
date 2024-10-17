@@ -7,15 +7,12 @@ from datetime import datetime
 def main():
     st.set_page_config(page_title="Promotion Management Hub", layout="wide")
     
-    
     st.markdown("""
         <div style='text-align: center;'>
             <img src='https://media.us.lg.com/m/4f3e261da34f4910/original/lg_logo.svg' width='150'>
         </div>
-        "", unsafe_allow_html=True)
-    st.markdown("""
-        
-        "", unsafe_allow_html=True)
+    "", unsafe_allow_html=True)
+    
     st.title("Promotion Management Hub")
     st.write("By MarTech Solutions")
     
