@@ -54,19 +54,19 @@ def main():
             }
             @media (prefers-color-scheme: dark) {
                 .stTextInput > div > input, .stTextArea > div > textarea {
-                    background-color: #333333;
-                    color: #ffffff;
+                    background-color: #f0ece4;
+                    color: #152542;
                     border-radius: 5px;
-                    border: 1px solid #555555;
+                    border: 1px solid #a3afc4;
                     padding: 8px;
                 }
                 .stForm > div {
-                    background-color: #444444;
+                    background-color: #f0ece4;
                     padding: 20px;
                     border-radius: 10px;
                 }
                 .stButton > button {
-                    background-color: #444444;
+                    background-color: #ea1917;
                     color: #ffffff;
                     border: none;
                     padding: 10px 20px;
@@ -74,13 +74,13 @@ def main():
                     font-weight: bold;
                 }
                 .stButton > button:hover {
-                    background-color: #666666;
+                    background-color: #a60032;
                 }
                 .stSelectbox > div > select, .stMultiselect > div > div > select {
-                    background-color: #555555;
-                    color: #ffffff;
+                    background-color: #e2e7f0;
+                    color: #3e547c;
                     border-radius: 5px;
-                    border: 1px solid #777777;
+                    border: 1px solid #a3afc4;
                     padding: 8px;
                 }
             }
