@@ -80,8 +80,8 @@ def main():
         # Embed Zapier Interface with optimized size and placement
         st.markdown(
             """
-            <div style='display: flex; justify-content: center;'>
-                <iframe src="https://interfaces.zapier.com/embed/page/cm2dc1615000d148mpumlhsyw?noBackground=true&allowQueryParams=true" style='max-width: 900px; width: 90%; height: 600px; border: none;'></iframe>
+            <div style='display: flex; justify-content: center; margin-top: 20px;'>
+                <iframe src="https://interfaces.zapier.com/embed/page/cm2dc1615000d148mpumlhsyw?noBackground=true&allowQueryParams=true" style='max-width: 1200px; width: 95%; height: 700px; border: none;'></iframe>
             </div>
             """,
             unsafe_allow_html=True
