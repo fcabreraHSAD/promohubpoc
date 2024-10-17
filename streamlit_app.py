@@ -96,6 +96,7 @@ def main():
 
             # Form submission button
             submitted = st.form_submit_button("Submit Promotion")
+
             if submitted:
                 missing_fields = validate_fields(
                     promo_name, start_date, end_date, display_start_date, display_end_date,
@@ -111,11 +112,10 @@ def main():
                                      extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
                                      is_finalized, activation_channel, status)
                     st.success("Promotion details successfully submitted! Redirecting to Promotions List...")
-                    for key in list(st.session_state.keys()):
-                        if key != 'menu':
-                            del st.session_state[key]
+                    
+                    # Update session state and rerun the app to navigate to the Promotions List page
                     st.session_state.menu = "Promotions List"
-                    st.write("Redirecting... Please use the sidebar to navigate.")
+                    st.experimental_rerun()
 
     elif choice == "Promotions List":
         # Embed Zapier Interface with optimized size and placement
@@ -164,46 +164,42 @@ def validate_fields(promo_name, start_date, end_date, display_start_date, displa
         missing_fields.append('Store Name')
     if not promotion_type:
         missing_fields.append('Promotion Type')
-    if extended_end_date and extended_end_date < end_date:
-        missing_fields.append('Extended End Date (cannot be earlier than End Date)')
     return missing_fields
 
 def handle_submission(promotion_id, promo_name, start_date, end_date, display_start_date, display_end_date,
-                      title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type,
-                      extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
-                      is_finalized, activation_channel, status):
-    # Prepare the data for webhook submission
-    promotion_data = {
-        "PromotionID": promotion_id,
-        "PromoName": promo_name,
-        "CouponCode": coupon_code,
-        "StartDate": start_date.strftime("%m/%d/%Y"),
-        "EndDate": end_date.strftime("%m/%d/%Y"),
-        "DisplayStartDate": display_start_date.strftime("%m/%d/%Y"),
-        "DisplayEndDate": display_end_date.strftime("%m/%d/%Y"),
-        "Description": description,
-        "Title": title,
-        "BodyCopy": body_copy,
-        "CTA": cta,
-        "Link": link,
-        "Assets": assets,
-        "TermsConditions": terms_conditions,
-        "TargetAudience": target_audience,
-        "DiscountRate": discount_rate,
-        "Status": status,
-        "StoreName": store_name,
-        "ApplicableProducts": applicable_products,
-        "PromotionType": promotion_type,
-        "IsFinalized": is_finalized,
-        "ActivationChannel": activation_channel,
-        "ExtendedEndDate": extended_end_date.strftime("%m/%d/%Y") if extended_end_date else ""
+                     title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type,
+                     extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
+                     is_finalized, activation_channel, status):
+    # Construct the data object
+    data = {
+        "promotion_id": promotion_id,
+        "promo_name": promo_name,
+        "coupon_code": coupon_code,
+        "start_date": start_date.strftime("%Y-%m-%d"),
+        "end_date": end_date.strftime("%Y-%m-%d"),
+        "display_start_date": display_start_date.strftime("%Y-%m-%d"),
+        "display_end_date": display_end_date.strftime("%Y-%m-%d"),
+        "title": title,
+        "description": description,
+        "body_copy": body_copy,
+        "link": link,
+        "cta": cta,
+        "assets": assets,
+        "terms_conditions": terms_conditions,
+        "target_audience": target_audience,
+        "discount_rate": discount_rate,
+        "store_name": store_name,
+        "applicable_products": applicable_products,
+        "promotion_type": promotion_type,
+        "is_finalized": is_finalized,
+        "activation_channel": activation_channel,
+        "extended_end_date": extended_end_date.strftime("%Y-%m-%d") if extended_end_date else None,
+        "status": status
     }
 
-    # Send data to Zapier webhook
-    webhook_url = "https://hooks.zapier.com/hooks/catch/9480052/2197ir5/"
-    response = requests.post(webhook_url, json=promotion_data)
+    # Submit the data to your API or server endpoint
+    response = requests.post("https://your-api-endpoint.com/submit", json=data)
 
-    # Handle the response
     if response.status_code == 200:
         st.success("Promotion details successfully submitted!")
     else:
