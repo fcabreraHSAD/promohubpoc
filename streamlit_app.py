@@ -19,7 +19,7 @@ def main():
         st.write("By MarTech Solutions")
 
         # Form to collect promotion data
-        with st.form("promotion_form", clear_on_submit=True):
+        with st.form("promotion_form", clear_on_submit=False):
             st.header("Enter Promotion Details")
 
             # Generate system-generated Promotion ID with prefix 'PMH'
@@ -71,10 +71,20 @@ def main():
             submitted = st.form_submit_button("Submit Promotion")
 
             if submitted:
-                handle_submission(promotion_id, promo_name, start_date, end_date, display_start_date, display_end_date,
-                                 title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type,
-                                 extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
-                                 is_finalized, activation_channel, status)
+                missing_fields = validate_fields(
+                    promo_name, start_date, end_date, display_start_date, display_end_date,
+                    title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type, extended_end_date
+                )
+                if missing_fields:
+                    for field in missing_fields:
+                        st.warning(f"Please fill out the field: {field}")
+                    st.error("Please fill out all required fields before submitting the form.")
+                else:
+                    handle_submission(promotion_id, promo_name, start_date, end_date, display_start_date, display_end_date,
+                                     title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type,
+                                     extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
+                                     is_finalized, activation_channel, status)
+                    st.sidebar.selectbox("Menu", menu, index=1)
 
     elif choice == "Promotions List":
         # Embed Zapier Interface with optimized size and placement
@@ -87,7 +97,6 @@ def main():
             unsafe_allow_html=True
         )
 
-    
 def display_logo():
     st.markdown(
         """
@@ -97,65 +106,77 @@ def display_logo():
         """, unsafe_allow_html=True
     )
 
+def validate_fields(promo_name, start_date, end_date, display_start_date, display_end_date,
+                    title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type, extended_end_date):
+    missing_fields = []
+    if not promo_name:
+        missing_fields.append('Promo Name')
+    if not start_date:
+        missing_fields.append('Start Date')
+    if not end_date:
+        missing_fields.append('End Date')
+    if not display_start_date:
+        missing_fields.append('Display Start Date')
+    if not display_end_date:
+        missing_fields.append('Display End Date')
+    if not title:
+        missing_fields.append('Title')
+    if not body_copy:
+        missing_fields.append('Body Copy')
+    if not assets:
+        missing_fields.append('Assets')
+    if not terms_conditions:
+        missing_fields.append('Terms & Conditions')
+    if not target_audience:
+        missing_fields.append('Target Audience')
+    if not store_name:
+        missing_fields.append('Store Name')
+    if not promotion_type:
+        missing_fields.append('Promotion Type')
+    if extended_end_date and extended_end_date < end_date:
+        missing_fields.append('Extended End Date (cannot be earlier than End Date)')
+    return missing_fields
+
 def handle_submission(promotion_id, promo_name, start_date, end_date, display_start_date, display_end_date,
                       title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type,
                       extended_end_date, coupon_code, description, cta, link, discount_rate, applicable_products,
                       is_finalized, activation_channel, status):
-    missing_fields = []
-    if extended_end_date and extended_end_date < end_date:
-        st.error("Extended End Date cannot be earlier than End Date.")
-        missing_fields.append('Extended End Date (if applicable)')
-    required_fields = [promo_name, start_date, end_date, display_start_date, display_end_date,
-                      title, body_copy, assets, terms_conditions, target_audience, store_name, promotion_type]
-    for idx, field in enumerate(required_fields):
-        if not field:
-            missing_fields.append(f'Required Field {idx + 1}')
-    if missing_fields:
-        for field in missing_fields:
-            st.warning(f"Please fill out the field: {field}")
-        st.error("Please fill out all required fields before submitting the form.")
+    # Prepare the data for webhook submission
+    promotion_data = {
+        "PromotionID": promotion_id,
+        "PromoName": promo_name,
+        "CouponCode": coupon_code,
+        "StartDate": start_date.strftime("%m/%d/%Y"),
+        "EndDate": end_date.strftime("%m/%d/%Y"),
+        "DisplayStartDate": display_start_date.strftime("%m/%d/%Y"),
+        "DisplayEndDate": display_end_date.strftime("%m/%d/%Y"),
+        "Description": description,
+        "Title": title,
+        "BodyCopy": body_copy,
+        "CTA": cta,
+        "Link": link,
+        "Assets": assets,
+        "TermsConditions": terms_conditions,
+        "TargetAudience": target_audience,
+        "DiscountRate": discount_rate,
+        "Status": status,
+        "StoreName": store_name,
+        "ApplicableProducts": applicable_products,
+        "PromotionType": promotion_type,
+        "IsFinalized": is_finalized,
+        "ActivationChannel": activation_channel,
+        "ExtendedEndDate": extended_end_date.strftime("%m/%d/%Y") if extended_end_date else ""
+    }
+
+    # Send data to Zapier webhook
+    webhook_url = "https://hooks.zapier.com/hooks/catch/9480052/2197ir5/"
+    response = requests.post(webhook_url, json=promotion_data)
+
+    # Handle the response
+    if response.status_code == 200:
+        st.success("Promotion details successfully submitted!")
     else:
-        # Prepare the data for webhook submission
-        promotion_data = {
-            "PromotionID": promotion_id,
-            "PromoName": promo_name,
-            "CouponCode": coupon_code,
-            "StartDate": start_date.strftime("%m/%d/%Y"),
-            "EndDate": end_date.strftime("%m/%d/%Y"),
-            "DisplayStartDate": display_start_date.strftime("%m/%d/%Y"),
-            "DisplayEndDate": display_end_date.strftime("%m/%d/%Y"),
-            "Description": description,
-            "Title": title,
-            "BodyCopy": body_copy,
-            "CTA": cta,
-            "Link": link,
-            "Assets": assets,
-            "TermsConditions": terms_conditions,
-            "TargetAudience": target_audience,
-            "DiscountRate": discount_rate,
-            "Status": status,
-            "StoreName": store_name,
-            "ApplicableProducts": applicable_products,
-            "PromotionType": promotion_type,
-            "IsFinalized": is_finalized,
-            "ActivationChannel": activation_channel,
-            "ExtendedEndDate": extended_end_date.strftime("%m/%d/%Y") if extended_end_date else ""
-        }
-
-        # Send data to Zapier webhook
-        webhook_url = "https://hooks.zapier.com/hooks/catch/9480052/2197ir5/"
-        response = requests.post(webhook_url, json=promotion_data)
-
-        # Handle the response
-        if response.status_code == 200:
-            st.success("Promotion details successfully submitted!")
-        else:
-            st.error(f"Failed to submit promotion details. Status code: {response.status_code}")
-
-def handle_webhook(data):
-    if data:
-        st.write("Webhook data received:")
-        st.json(data)
+        st.error(f"Failed to submit promotion details. Status code: {response.status_code}")
 
 if __name__ == "__main__":
     main()
